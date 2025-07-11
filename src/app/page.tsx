@@ -5,7 +5,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@/components/ui/select';
 import { cn } from '@/lib/utils';
-import { Mic, Plus } from 'lucide-react';
+import { Mic, Plus, Send } from 'lucide-react';
 
 type Message = {
   text: string;
@@ -65,7 +65,6 @@ export default function Home() {
       'min-h-screen w-full bg-[#0f111a] text-white flex flex-col items-center transition-all duration-500 ease-in-out',
       isChatMode ? 'pt-6' : 'justify-center'
     )}>
-      {/* Top content only in default mode */}
       {!isChatMode && (
         <>
           <h1 className="text-2xl font-semibold mb-6 text-white">
@@ -85,7 +84,6 @@ export default function Home() {
         </>
       )}
 
-      {/* Chat messages (optional — only show in chat mode) */}
       {isChatMode && (
         <div className="w-full max-w-3xl mb-28 px-4 space-y-4 transition-all">
           {messages.map((msg, i) => (
@@ -106,10 +104,8 @@ export default function Home() {
         </div>
       )}
 
-      {/* Floating input bar */}
       <div className="fixed bottom-6 w-full max-w-3xl px-4">
         <div className="bg-[#1e1f2b] border border-white/10 shadow-lg rounded-2xl p-4 flex items-end gap-3 backdrop-blur-lg">
-          {/* Agent Select */}
           <Select value={agent} onValueChange={(v) => setAgent(v as any)}>
             <SelectTrigger className="w-[120px] text-white bg-white/10 border-white/20 rounded-md">
               <SelectValue />
@@ -122,23 +118,21 @@ export default function Home() {
             </SelectContent>
           </Select>
 
-          {/* Textarea */}
           <Textarea
             ref={inputRef}
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onInput={autoResize}
-            placeholder="Ask MetaAgent anything..."
+            placeholder="Ask Apex"
             className="flex-1 resize-none min-h-[48px] max-h-[160px] overflow-hidden bg-transparent text-white border-none focus:ring-0"
           />
 
-          {/* Send / Mic */}
           <div className="flex items-center gap-2">
-            <Button onClick={sendMessage} size="icon" className="rounded-full bg-purple-600 hover:bg-purple-700">
+            <Button size="icon" className="rounded-full bg-zinc-700 hover:bg-zinc-600">
               <Plus size={18} />
             </Button>
-            <Button size="icon" variant="ghost" className="hover:bg-white/10">
-              <Mic size={18} />
+            <Button onClick={sendMessage} size="icon" className="rounded-full bg-purple-600 hover:bg-purple-700">
+              <Send size={18} />
             </Button>
           </div>
         </div>
