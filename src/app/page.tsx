@@ -1,155 +1,49 @@
 'use client';
 
-import { useState, useRef } from 'react';
-import { Textarea } from '@/components/ui/textarea';
+import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@/components/ui/select';
-import { cn } from '@/lib/utils';
-import { Mic, Plus, Send } from 'lucide-react';
+import { motion } from 'framer-motion';
 
-type Message = {
-  text: string;
-  sender: 'user' | 'agent';
-  agent?: 'GPT-4o' | 'Claude 3.5' | 'Gemini 1.5';
-};
-
-const quickActions = [
-  'FGF Locations',
-  'Learn something new',
-  'Create an image',
-  'Make a plan',
-  'Brainstorm ideas',
-  'Sales for the week',
-];
-
-export default function Home() {
-  const [messages, setMessages] = useState<Message[]>([]);
-  const [input, setInput] = useState('');
-  const [agent, setAgent] = useState<'auto' | 'gpt4o' | 'claude' | 'gemini'>('auto');
-  const inputRef = useRef<HTMLTextAreaElement | null>(null);
-
-  const isChatMode = messages.length > 0;
-
-  const autoResize = () => {
-    if (inputRef.current) {
-      inputRef.current.style.height = 'auto';
-      inputRef.current.style.height = inputRef.current.scrollHeight + 'px';
-    }
-  };
-
-  const sendMessage = () => {
-    if (!input.trim()) return;
-
-    const userMsg: Message = { text: input, sender: 'user' };
-    const selected = agent === 'auto' ? routeAgent(input) : formatAgent(agent);
-    const botMsg: Message = {
-      text: `Response from ${selected}`,
-      sender: 'agent',
-      agent: selected,
-    };
-
-    setMessages((prev) => [...prev, userMsg]);
-
-    setTimeout(() => {
-      setMessages((prev) => [...prev, botMsg]);
-    }, 600);
-
-    setInput('');
-    setTimeout(() => {
-      inputRef.current?.style.setProperty('height', '48px');
-    }, 50);
-  };
+export default function LandingPage() {
+  const router = useRouter();
 
   return (
-    <div className={cn(
-      'min-h-screen w-full bg-[#0f111a] text-white flex flex-col items-center transition-all duration-500 ease-in-out',
-      isChatMode ? 'pt-6' : 'justify-center'
-    )}>
-      {!isChatMode && (
-        <>
-          <h1 className="text-2xl font-semibold mb-6 text-white">
-            What can I help you with today?
-          </h1>
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: 'easeOut' }}
+      className="min-h-screen w-full bg-[#0f111a] text-white flex flex-col items-center justify-center px-4 text-center"
+    >
+      <motion.h1
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2, duration: 0.6 }}
+        className="text-4xl md:text-5xl font-bold mb-4"
+      >
+        Welcome to <span className="text-purple-400">Apex</span>
+      </motion.h1>
 
-          <div className="flex flex-wrap justify-center gap-3 max-w-2xl mb-36">
-            {quickActions.map((text, i) => (
-              <button
-                key={i}
-                className="px-4 py-2 rounded-full bg-white/5 text-sm text-white hover:bg-white/10 transition"
-              >
-                {text}
-              </button>
-            ))}
-          </div>
-        </>
-      )}
+      <motion.p
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4, duration: 0.6 }}
+        className="text-lg text-white/70 max-w-xl mb-8"
+      >
+        <span className="text-purple-400 text-xl">FGF Brands </span> Personal intelligent multi-agent AI assistant. Learn, plan, create, and chat with GPT-4o, Gemini, and more.
+      </motion.p>
 
-      {isChatMode && (
-        <div className="w-full max-w-3xl mb-28 px-4 space-y-4 transition-all">
-          {messages.map((msg, i) => (
-            <div key={i} className={cn('flex', msg.sender === 'user' ? 'justify-end' : 'justify-start')}>
-              <div className={cn(
-                'max-w-[75%] p-3 rounded-xl text-sm',
-                msg.sender === 'user'
-                  ? 'bg-purple-600 text-white'
-                  : 'bg-white/10 text-white border border-white/10'
-              )}>
-                {msg.sender === 'agent' && (
-                  <div className="text-xs text-purple-400 font-semibold mb-1">{msg.agent}</div>
-                )}
-                {msg.text}
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-
-      <div className="fixed bottom-6 w-full max-w-3xl px-4">
-        <div className="bg-[#1e1f2b] border border-white/10 shadow-lg rounded-2xl p-4 flex items-end gap-3 backdrop-blur-lg">
-          <Select value={agent} onValueChange={(v) => setAgent(v as any)}>
-            <SelectTrigger className="w-[120px] text-white bg-white/10 border-white/20 rounded-md">
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent className="bg-zinc-800 text-white border-zinc-700">
-              <SelectItem value="auto">Auto</SelectItem>
-              <SelectItem value="gpt4o">GPT-4o</SelectItem>
-              <SelectItem value="claude">Claude</SelectItem>
-              <SelectItem value="gemini">Gemini</SelectItem>
-            </SelectContent>
-          </Select>
-
-          <Textarea
-            ref={inputRef}
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onInput={autoResize}
-            placeholder="Ask Apex"
-            className="flex-1 resize-none min-h-[48px] max-h-[160px] overflow-hidden bg-transparent text-white border-none focus:ring-0"
-          />
-
-          <div className="flex items-center gap-2">
-            <Button size="icon" className="rounded-full bg-zinc-700 hover:bg-zinc-600">
-              <Plus size={18} />
-            </Button>
-            <Button onClick={sendMessage} size="icon" className="rounded-full bg-purple-600 hover:bg-purple-700">
-              <Send size={18} />
-            </Button>
-          </div>
-        </div>
-      </div>
-    </div>
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 0.6, duration: 0.5 }}
+      >
+        <Button
+          onClick={() => router.push('/chat')}
+          className="bg-purple-600 hover:bg-purple-700 transition px-6 py-3 text-base rounded-xl shadow-lg"
+        >
+          Start Chat
+        </Button>
+      </motion.div>
+    </motion.div>
   );
-}
-
-function routeAgent(text: string): 'GPT-4o' | 'Claude 3.5' | 'Gemini 1.5' {
-  const lower = text.toLowerCase();
-  if (lower.includes('summary') || lower.includes('analyze')) return 'Claude 3.5';
-  if (lower.includes('code') || lower.includes('debug')) return 'Gemini 1.5';
-  return 'GPT-4o';
-}
-
-function formatAgent(key: string): 'GPT-4o' | 'Claude 3.5' | 'Gemini 1.5' {
-  if (key === 'claude') return 'Claude 3.5';
-  if (key === 'gemini') return 'Gemini 1.5';
-  return 'GPT-4o';
 }
