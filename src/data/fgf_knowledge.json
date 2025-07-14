@@ -1,0 +1,128 @@
+
+[
+  {
+    "keywords": ["fgf", "headquarters", "location", "address"],
+    "response": "FGF Brands' headquarters is located in Toronto, Ontario, Canada."
+  },
+  {
+    "keywords": ["products", "brands", "baked goods", "what does fgf make"],
+    "response": "FGF Brands makes stone oven pizzas, naan, muffins, croissants, and artisan breads. Their brands include Stonefire, Simple Joys, and others."
+  },
+  {
+    "keywords": ["culture", "values", "work", "environment"],
+    "response": "FGF Brands promotes innovation, collaboration, entrepreneurship, and continuous improvement in a fast-paced culture."
+  },
+  {
+    "keywords": ["facilities", "factories", "plants", "locations"],
+    "response": "FGF operates several manufacturing facilities across North America, with major ones in Ontario and the U.S."
+  },
+  {
+    "keywords": ["internship", "co-op", "student"],
+    "response": "FGF offers IT, engineering, and operations internships with real-world experience and growth opportunities."
+  },
+  {
+    "keywords": ["tech", "digital", "ai", "data", "smart"],
+    "response": "FGF is a tech-driven bakery investing in AI, smart manufacturing, and data platforms to innovate in food production."
+  },
+  {
+    "keywords": [
+      "units sold",
+      "q2 sales",
+      "revenue",
+      "artisan",
+      "artisan sourdough loaf"
+    ],
+    "response": "In Q2 2025, the product 'Artisan Sourdough Loaf' sold a total of 4783 units, generating $15655.95 in revenue."
+  },
+  {
+    "keywords": [
+      "units sold",
+      "q2 sales",
+      "revenue",
+      "banana bread slice",
+      "banana"
+    ],
+    "response": "In Q2 2025, the product 'Banana Bread Slice' sold a total of 4587 units, generating $16783.43 in revenue."
+  },
+  {
+    "keywords": [
+      "units sold",
+      "blueberry muffin",
+      "q2 sales",
+      "revenue",
+      "blueberry"
+    ],
+    "response": "In Q2 2025, the product 'Blueberry Muffin' sold a total of 4728 units, generating $17094.73 in revenue."
+  },
+  {
+    "keywords": [
+      "units sold",
+      "cheddar biscuit",
+      "q2 sales",
+      "revenue",
+      "cheddar"
+    ],
+    "response": "In Q2 2025, the product 'Cheddar Biscuit' sold a total of 4392 units, generating $15721.39 in revenue."
+  },
+  {
+    "keywords": [
+      "units sold",
+      "chocolate",
+      "q2 sales",
+      "revenue",
+      "chocolate croissant"
+    ],
+    "response": "In Q2 2025, the product 'Chocolate Croissant' sold a total of 5220 units, generating $19885.29 in revenue."
+  },
+  {
+    "keywords": [
+      "units sold",
+      "cinnamon roll",
+      "q2 sales",
+      "revenue",
+      "cinnamon"
+    ],
+    "response": "In Q2 2025, the product 'Cinnamon Roll' sold a total of 4871 units, generating $16938.03 in revenue."
+  },
+  {
+    "keywords": [
+      "units sold",
+      "q2 sales",
+      "revenue",
+      "gluten-free brownie",
+      "gluten-free"
+    ],
+    "response": "In Q2 2025, the product 'Gluten-Free Brownie' sold a total of 5135 units, generating $17303.47 in revenue."
+  },
+  {
+    "keywords": [
+      "units sold",
+      "multigrain bagel",
+      "q2 sales",
+      "revenue",
+      "multigrain"
+    ],
+    "response": "In Q2 2025, the product 'Multigrain Bagel' sold a total of 5262 units, generating $18922.82 in revenue."
+  },
+  {
+    "keywords": [
+      "units sold",
+      "q2 sales",
+      "revenue",
+      "raisin",
+      "raisin danish"
+    ],
+    "response": "In Q2 2025, the product 'Raisin Danish' sold a total of 4931 units, generating $17539.41 in revenue."
+  },
+  {
+    "keywords": [
+      "units sold",
+      "q2 sales",
+      "whole wheat bread",
+      "revenue",
+      "whole"
+    ],
+    "response": "In Q2 2025, the product 'Whole Wheat Bread' sold a total of 5043 units, generating $16644.29 in revenue."
+  }
+
+]
